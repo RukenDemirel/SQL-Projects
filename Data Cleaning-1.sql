@@ -90,7 +90,7 @@ SET `date` = STR_TO_DATE(`date`,'%m/%d/%Y');
 ALTER TABLE layoffs
 MODIFY COLUMN `date` DATE;
 
--- Let's check each unique value in each column 
+-- Checking each unique value in each column 
 
 -- 'company' column
 SELECT company
@@ -110,8 +110,8 @@ SELECT DISTINCT country
 FROM layoffs
 ORDER BY  country;
 
--- Here I see United States and United States. on the country 'column'
--- I want to remove the '.'
+-- Here there are United States and United States. on the country 'column'
+-- Remove the '.'
 
 UPDATE layoffs
 SET country = TRIM(TRAILING '.' FROM country);
@@ -122,7 +122,7 @@ FROM layoffs
 ORDER BY  industry;
 
 -- There are values 'Crypto', 'Crypto Currency' and 'CryptoCurrency' in 'industry' column
--- They are all the same so I want to change them all to 'Crypto'
+-- Change them all to 'Crypto'
  
 UPDATE layoffs
 SET industry = 'Crypto'
@@ -153,7 +153,7 @@ SELECT *
 FROM layoffs
 WHERE industry IS NULL;
 
--- There are 4 rows Let's take a look at these
+-- Check all 4 rows
 
 SELECT *
 FROM layoffs
@@ -164,10 +164,10 @@ SELECT *
 FROM layoffs
 WHERE company LIKE 'Airbnb%';
 
--- We have 2 rows with Airbnb in 'company' column. One of the 'industry' is Travel and other NULL 
--- We can set the NULL to Travel
--- Lets do this for all companies
--- To be sure I am also checking if the locations are also the same
+-- There are 2 rows with Airbnb in 'company' column. One of the 'industry' is Travel and other NULL 
+-- Set the NULL to Travel
+-- Do this for all companies
+-- Also checking if the locations are also the same
 
 SELECT t1.company, t1.location, t2.location, t1.industry, t2.industry
 FROM layoffs t1
