@@ -1,2 +1,2 @@
-# Portfolio Projects
-Portfolio Projects
+# SQL Projects
+SQL Projects
